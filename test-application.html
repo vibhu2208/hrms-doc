@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Job Application</title>
+</head>
+<body>
+    <h1>Test Job Application</h1>
+    <form id="testForm">
+        <input type="text" name="firstName" placeholder="First Name" value="John" required><br><br>
+        <input type="text" name="lastName" placeholder="Last Name" value="Doe" required><br><br>
+        <input type="email" name="email" placeholder="Email" value="john.doe@example.com" required><br><br>
+        <input type="tel" name="phone" placeholder="Phone" value="1234567890" required><br><br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        document.getElementById('testForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData();
+            formData.append('firstName', 'John');
+            formData.append('lastName', 'Doe');
+            formData.append('email', 'john.doe@example.com');
+            formData.append('phone', '1234567890');
+            formData.append('skills', JSON.stringify(['JavaScript', 'React']));
+            formData.append('education', JSON.stringify([{degree: 'B.Tech', institution: 'Test University'}]));
+            formData.append('professionalExperience', JSON.stringify([]));
+            formData.append('preferredLocation', JSON.stringify(['Mumbai']));
+            formData.append('experience[years]', '2');
+            formData.append('experience[months]', '6');
+            
+            try {
+                const response = await fetch('http://localhost:5000/api/public/jobs/68fdc6560584ce5f3e22fbf9/apply', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                console.log('Response:', result);
+                alert('Response: ' + JSON.stringify(result));
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error: ' + error.message);
+            }
+        });
+    </script>
+</body>
+</html>

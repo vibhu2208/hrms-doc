@@ -2,11 +2,21 @@
 
 A comprehensive full-stack HRMS application built with React, Node.js, Express, and MongoDB.
 
+## ✅ Latest Updates
+
+**CORS Issue Resolved!** The frontend now connects seamlessly to the live backend using a development proxy. No more CORS errors during development.
+
+- **Live Backend**: Connected to https://hrms-backend-xbz8.onrender.com
+- **Development Proxy**: Automatic API request forwarding during development
+- **Production Ready**: Optimized for Vercel deployment
+
 ## 🚀 Features
 
 - **Dashboard:** Quick stats and analytics
 - **Job Desk:** Manage job roles and positions
+  - **NEW: Public Careers Page** - Public job listings and application portal
 - **Employee Management:** Complete employee lifecycle management
+  - **Bulk Employee Upload** - Import employees via CSV, Excel, or Google Sheets
 - **Leave Management:** Apply, approve, and track leaves
 - **Attendance:** Daily attendance tracking with filters
 - **Payroll:** Salary management, deductions, and reports
@@ -114,12 +124,52 @@ The system uses JWT-based authentication with three roles:
 API endpoints are organized by feature:
 - `/api/auth` - Authentication
 - `/api/employees` - Employee management
+  - `/api/employees/bulk/validate` - Validate bulk employee data
+  - `/api/employees/bulk/create` - Create employees in bulk
+  - `/api/employees/bulk/template` - Download sample template
+  - `/api/employees/google-sheets/fetch` - Fetch from Google Sheets
 - `/api/leave` - Leave management
 - `/api/attendance` - Attendance tracking
 - `/api/payroll` - Payroll operations
 - `/api/assets` - Asset management
 - `/api/onboarding` - Onboarding process
 - `/api/offboarding` - Offboarding process
+
+## 📤 Bulk Employee Upload
+
+The system supports importing multiple employees at once via:
+- **CSV Files** - Upload .csv files with employee data
+- **Excel Files** - Upload .xlsx or .xls files
+- **Google Sheets** - Direct integration with Google Sheets
+
+### Features
+- ✅ Comprehensive data validation
+- ✅ Preview before upload
+- ✅ Detailed error reporting
+- ✅ Progress tracking
+- ✅ Sample template download
+- ✅ Support for all employee fields
+
+For detailed instructions, see [BULK_UPLOAD_GUIDE.md](./BULK_UPLOAD_GUIDE.md)
+
+## 🌐 Public Careers Page
+
+The system includes a public-facing careers page for job postings and applications:
+- **Public Job Listings** - Display all active job openings
+- **Advanced Filters** - Search by title, department, location, type
+- **Application Portal** - Comprehensive application form
+- **Auto-sync with HRMS** - Applications appear directly in Job Desk
+- **No Authentication Required** - Open to all candidates
+
+### Features
+- ✅ Real-time job listings
+- ✅ Search and filter functionality
+- ✅ Comprehensive application form
+- ✅ Duplicate application prevention
+- ✅ Mobile-responsive design
+- ✅ Automatic candidate tracking
+
+For detailed instructions, see [CAREERS_PAGE_IMPLEMENTATION.md](./CAREERS_PAGE_IMPLEMENTATION.md)
 
 ## 🎨 Design
 
